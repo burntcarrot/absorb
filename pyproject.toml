@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "absorb"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "The extensible, feature-rich CLI workspace."
+authors = ["Aadhav Vignesh <aadhav.n1@gmail.com>"]
 
 [tool.coverage.paths]
 source = ["absorb", "*/site-packages"]
