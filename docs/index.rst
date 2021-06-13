@@ -29,7 +29,7 @@ absorb's usage looks like:
 
    $ absorb [OPTIONS]
 
-Absorb provides 3 commands: `tasks`, `kanban`, `idea`
+absorb provides 3 commands: `tasks`, `kanban`, `idea`
 
 ``tasks`` is the command used for using dealing with tasks. ``tasks`` has multiple subcommands for adding, deleting and editing a task.
 
