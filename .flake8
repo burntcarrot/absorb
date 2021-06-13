@@ -1,0 +1,8 @@
+[flake8]
+select = ANN,BLK,DAR,S,C,E,F,W
+; select = BLK,D,S
+ignore = E203,W503
+max-line-length = 88
+per-file-ignores =
+    tests/*:S101,ANN
+    noxfile.py:ANN

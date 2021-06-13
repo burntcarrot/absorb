@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "absorb"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["absorb"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.poetry.scripts]
+absorb = "absorb.main:cli"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+click = "^8.0.1"
+click-plugins = "^1.1.1"
+colorama = "^0.4.4"
+commonmark = "^0.9.1"
+gitdb = "^4.0.7"
+GitPython = "^3.1.17"
+importlib-metadata = "^4.5.0"
+Pygments = "^2.9.0"
+python-json-logger = "^2.0.1"
+rich = "^10.3.0"
+smmap = "^4.0.0"
+typing-extensions = "^3.10.0"
+zipp = "^3.4.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+setuptools = "^57.0.0"
+coverage = {extras = ["toml"], version = "^5.5"}
+pytest-cov = "^2.12.1"
+black = "^21.5b2"
+flake8 = "^3.9.2"
+flake8-black = "^0.2.1"
+flake8-bandit = "^2.1.2"
+safety = "^1.10.3"
+Sphinx = "^4.0.2"
+darglint = "^1.8.0"
+mypy = "^0.902"
+pytype = {version = "^2021.5.25", python = "3.7"}
+typeguard = "^2.12.1"
+flake8-annotations = "^2.6.2"
+codecov = "^2.1.11"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
