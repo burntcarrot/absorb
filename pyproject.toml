@@ -50,6 +50,8 @@ pytype = {version = "^2021.5.25", python = "3.7"}
 typeguard = "^2.12.1"
 flake8-annotations = "^2.6.2"
 codecov = "^2.1.11"
+sphinx-click = "^3.0.0"
+faculty-sphinx-theme = "^0.3.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
