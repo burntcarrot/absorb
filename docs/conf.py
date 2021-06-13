@@ -10,5 +10,4 @@ extensions = [
 ]
 html_theme = "faculty-sphinx-theme"
 html_logo = "logo.png"
-# html_theme_options = {"logo": "logo.png", "favicon": "logo.png"}
 html_favicon = "logo.png"

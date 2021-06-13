@@ -5,18 +5,14 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.7", "3.8"]
-    name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.8"
           architecture: x64
-    - run: pip install nox==2021.6.6
-    - run: pip install poetry==1.1.6
-    - run: nox
-    - run: poetry build
-    - run: poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}
+      - run: pip install nox==2021.6.6
+      - run: pip install poetry==1.1.6
+      - run: nox
+      - run: poetry build
+      - run: poetry publish --username=__token__ --password=${{ secrets.PYPI_TOKEN }}

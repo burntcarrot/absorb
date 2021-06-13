@@ -110,7 +110,7 @@ def typeguard(session: Session) -> None:
     session.run("pytest", f"--typeguard-packages={package}")
 
 
-@nox.session(python=["3.7", "3.8"])
+@nox.session(python=["3.7"])
 def coverage(session: Session) -> None:
     """Upload coverage data."""
     install_with_constraints(session, "coverage[toml]", "codecov")

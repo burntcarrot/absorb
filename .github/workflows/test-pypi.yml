@@ -6,15 +6,11 @@ on:
 jobs:
   test_pypi:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ["3.7", "3.8"]
-    name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v1
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.7"
           architecture: x64
       - run: pip install poetry==1.1.6
       - run: >-

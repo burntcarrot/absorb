@@ -5,7 +5,7 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.coverage.paths]
-source = ["src", "*/site-packages"]
+source = ["absorb", "*/site-packages"]
 
 [tool.coverage.run]
 branch = true
