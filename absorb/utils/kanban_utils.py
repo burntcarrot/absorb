@@ -3,9 +3,6 @@ from rich.table import Table
 from rich.console import Console
 from pathlib import Path
 
-# Parse YAML config to get columns
-# Do checks with respect to column name, if not found raise Error
-
 kanban_board = Table(show_header=True, header_style="bold")
 kanban_board.add_column("Completed")
 kanban_board.add_column("Doing")
