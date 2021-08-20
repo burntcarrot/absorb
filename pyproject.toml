@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "absorb"
-version = "0.1.0"
+version = "0.1.1"
 description = "The extensible, feature-rich CLI workspace."
 authors = ["Aadhav Vignesh <aadhav.n1@gmail.com>"]
 
