@@ -229,6 +229,8 @@ def show() -> None:
             kanban_content = json.load(kanban_file)
             kanban_utils.parse_kanban(kanban_content)
     except FileNotFoundError as e:
+        with kanban_path.open("a") as kanban_file:
+            kanban_file.write("[]")
         logger.error(e)
         console.print(
             ":cross_mark: Failed to read from the file! Please check the logs in the home directory."
