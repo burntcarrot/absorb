@@ -37,13 +37,9 @@
 -Experiment by creating your own plugins! **Break and build things. Install locally. Add your own dependencies. No need to wait for your PR to get merged.**
 
 
-### Not interested by the possibilities mentioned above?
+Not interested by the possibilities mentioned above?
 
-### Give it a try. Maybe you would like it! 😉
-
-#### `pip install absorb`
-
-
+Give it a try. Maybe you would like it! 😉
 
 # Installation
 
@@ -71,3 +67,18 @@ More details can be found in the [documentation.](https://absorb.readthedocs.io)
 # Documentation
 
 Documentation is available at [Read the Docs](https://absorb.readthedocs.io).
+
+# Plugins
+
+Check out [absorb-plugins](https://github.com/burntcarrot/absorb-plugins) for sample plugins and a guide on creating plugins from scratch!
+
+# FAQ
+
+- **How do I create plugins?**
+  - Check out [absorb-plugins](https://github.com/burntcarrot/absorb-plugins) for sample plugins and a guide on creating plugins from scratch!
+- **Why can't I install `absorb` in Python 3.5/3.6?**
+  - `absorb` uses [rich](https://github.com/willmcgugan/rich) for displaying content. [rich](https://github.com/willmcgugan/rich) uses [dataclasses](https://docs.python.org/3/library/dataclasses.html), which were introduced in Python 3.7 via [PEP 557](https://www.python.org/dev/peps/pep-0557/).
+- **If I uninstall `absorb`, would my data get deleted too?**
+  - **No.** absorb doesn't delete the files, so even if you messed up your installation or if you need to uninstall `pip`, you can re-install `absorb` and your data is loaded automatically.
+- **How do I create backups?**
+  - The "brain" (directory containing all files related to `absorb`) is a `git` repository. You can set up a cron job for uploading your files to GitHub, or even other cloud storage providers.
