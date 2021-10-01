@@ -12,7 +12,6 @@ from click_plugins import with_plugins
 @click.group()
 def cli() -> None:
     """Creates the main click group for absorb."""
-    pass
 
 
 cli.add_command(tasks_group.tasks)

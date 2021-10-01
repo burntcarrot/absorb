@@ -51,8 +51,6 @@ def parse_date(date_str: str, *args: str) -> datetime:
                 minutes_filtered = int(token[:-1])
             elif token[-1] == "s":
                 seconds_filtered = int(token[:-1])
-            else:
-                pass
 
         if len(args) > 0:
             task_due_str = args[0]
