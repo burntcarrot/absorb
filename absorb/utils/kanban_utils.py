@@ -37,8 +37,7 @@ def parse_card(card: Any) -> str:
                 ":cross_mark: Failed to read from the file! Please check the logs in the home directory."
             )
         return f"[bold red]{card_id}[/bold red]\n{card_name}\n[bold yellow]\ndescription:\n{card_description}\ntags: {card_tags}[/bold yellow]\n"
-    else:
-        return f"[bold red]{card_id}[/bold red]\n{card_name}\n[bold yellow]tags: {card_tags}[/bold yellow]\n"
+    return f"[bold red]{card_id}[/bold red]\n{card_name}\n[bold yellow]tags: {card_tags}[/bold yellow]\n"
 
 
 def parse_kanban(content: Any) -> None:

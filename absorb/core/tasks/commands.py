@@ -40,7 +40,7 @@ def parse_date(date_str: str, *args: str) -> datetime:
 
     if date_str == ".":
         return datetime.now()
-    elif date_str[0] == "+" and len(date_str) > 1:
+    if date_str[0] == "+" and len(date_str) > 1:
         token_list = date_str[1:].split()
         for token in token_list:
             if token[-1] == "d":
@@ -70,7 +70,7 @@ def parse_date(date_str: str, *args: str) -> datetime:
             )
 
         return shifted_date
-    elif len(date_str) > 1:
+    if len(date_str) > 1:
         try:
             task_date = datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S.%f")
             return task_date

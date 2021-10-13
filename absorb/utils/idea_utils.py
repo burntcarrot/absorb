@@ -54,8 +54,7 @@ def parse_idea(idea: Any) -> str:
                 ":cross_mark: Failed to read from the file! Please check the logs in the home directory."
             )
         return f"\n[bold red]Idea ID: {idea_id}[/bold red]\n[bold magenta]{idea_name}[/bold magenta]\n\n[bold green]Idea Description:[/bold green]\n\n{idea_description}\n\n[bold yellow]Tags: {idea_tags}[/bold yellow]\n"
-    else:
-        return f"\n[bold red]Idea ID: {idea_id}[/bold red]\n[bold magenta]{idea_name}[/bold magenta]\n[bold yellow]Tags: {idea_tags}[/bold yellow]\n"
+    return f"\n[bold red]Idea ID: {idea_id}[/bold red]\n[bold magenta]{idea_name}[/bold magenta]\n[bold yellow]Tags: {idea_tags}[/bold yellow]\n"
 
 
 def open_idea(file_content: Any) -> None:
