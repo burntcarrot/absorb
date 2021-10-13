@@ -46,7 +46,7 @@ def new(name: str, description: str, tags: str) -> None:
     try:
         with idea_path.open("r") as ideas_file:
             ideas_json = json.load(ideas_file)
-            card_id = len([idea for idea in ideas_json]) + 1
+            card_id = len(list(ideas_json)) + 1
             if description == "+file":
                 description_file_name = input("Enter file path to load description: ")
                 content = {

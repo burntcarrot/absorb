@@ -48,7 +48,7 @@ def add(name: str, status: str, description: str, tags: str) -> None:
         with kanban_path.open("r") as kanban_file:
             kanban_json = json.load(kanban_file)
 
-            card_id = len([card for card in kanban_json]) + 1
+            card_id = len(list(kanban_json)) + 1
             if description == "+file":
                 description_file_name = input("Enter file path to load description: ")
                 content = {
