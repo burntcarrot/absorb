@@ -6,6 +6,14 @@ from click.testing import CliRunner
 from absorb.core.kanban.commands import kanban
 from absorb.config.paths import ROOT_PATH
 
+card_path = os.fspath(
+    Path(Path.cwd() / Path(Path("tests") / Path("files") / "example-fail.json"))
+)
+
+card_info_path = os.fspath(
+    Path(Path.cwd() / Path(Path("tests") / Path("files") / "card-info.md"))
+)
+
 
 @pytest.fixture
 def runner() -> CliRunner:
@@ -44,11 +52,6 @@ def test_kanban_add_card_no_tags(runner: CliRunner) -> None:
         kanban, ["add", "New card.", "doing", "Some description.", "."]
     )
     assert result.exit_code == 0
-
-
-card_path = os.fspath(
-    Path(Path.cwd() / Path(Path("tests") / Path("files") / "example-fail.json"))
-)
 
 
 def test_kanban_add_card_with_input_file_description(runner: CliRunner) -> None:
@@ -115,7 +118,7 @@ def test_kanban_edit_card_name_and_description_file(runner: CliRunner) -> None:
     result = runner.invoke(
         kanban,
         ["edit", "#2", "New name.", "+file", "."],
-        input="absorb\\tests\\files\\card-info.md",
+        input=card_info_path,
     )
     assert result.exit_code == 0
 

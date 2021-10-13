@@ -127,16 +127,6 @@ def test_task_show_group_valid(runner: CliRunner) -> None:
     assert result.exit_code == 0
 
 
-def test_task_show_group_valid_FileNotFoundError(runner: CliRunner) -> None:
-    """Showing a task (by group) but tasks.json doesnt existshould return 0, if the group is valid in nature."""
-    # mock entry
-    os.rename(ROOT_PATH / "tasks.json", ROOT_PATH / "_tasks.json")
-    result = runner.invoke(tasks, ["show-group", "@relax"])
-    assert result.exit_code == 0
-    os.remove(ROOT_PATH / "tasks.json")
-    os.rename(ROOT_PATH / "_tasks.json", ROOT_PATH / "tasks.json")
-
-
 def test_task_show_group_invalid(runner: CliRunner) -> None:
     """Showing a task (by group) should return -1, if the group is invalid in nature."""
     result = runner.invoke(tasks, ["show-group", "not a tag"])
@@ -144,7 +134,7 @@ def test_task_show_group_invalid(runner: CliRunner) -> None:
 
 
 def test_task_show_group_valid_FileNotFoundError(runner: CliRunner) -> None:
-    """Showing a task (by group) but task.json dosent exist it should return -1."""
+    """Showing a task (by group) but task.json doesn't exist it should return -1."""
     # mock entry
     os.rename(ROOT_PATH / "tasks.json", ROOT_PATH / "_tasks.json")
     runner.invoke(tasks, ["add", "New task.", "+4d", "low", "@relax"])
@@ -161,7 +151,7 @@ def test_task_show(runner: CliRunner) -> None:
 
 
 def test_task_show_FileNotFoundError(runner: CliRunner) -> None:
-    """The show command for tasks but tasks.json doesnt existshould return -1."""
+    """The show command for tasks but tasks.json doesn't existshould return -1."""
     os.rename(ROOT_PATH / "tasks.json", ROOT_PATH / "_tasks.json")
     result = runner.invoke(tasks, ["show"])
     assert result.exit_code == -1
@@ -198,7 +188,7 @@ def test_task_edit(runner: CliRunner) -> None:
 
 
 def test_task_edit_FileNotFoundError(runner: CliRunner) -> None:
-    """Editing a task normally but tasks.json doesnt existshould return 0, if it is valid in nature."""
+    """Editing a task normally but tasks.json doesn't exist should return 0, if it is valid in nature."""
     os.rename(ROOT_PATH / "tasks.json", ROOT_PATH / "_tasks.json")
     result = runner.invoke(tasks, ["edit", "#1", "Modified task.", ".", "low", "."])
     assert result.exit_code == 0
@@ -230,7 +220,7 @@ def test_task_delete(runner: CliRunner) -> None:
 
 
 def test_task_delete_FileNotFoundError(runner: CliRunner) -> None:
-    """Deleting a task with the help of a ID but tasks.json doesnt existshould return 0, if it is valid in nature."""
+    """Deleting a task with the help of a ID but tasks.json doesn't existshould return 0, if it is valid in nature."""
     os.rename(ROOT_PATH / "tasks.json", ROOT_PATH / "_tasks.json")
     result = runner.invoke(tasks, ["delete", "#1"])
     assert result.exit_code == 0

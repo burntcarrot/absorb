@@ -16,6 +16,7 @@ file_path = os.fspath(
     Path(Path.cwd() / Path(Path("tests") / Path("files") / "idea_description.txt"))
 )
 
+
 # Tests for new() (new idea)
 def test_idea_new(runner: CliRunner) -> None:
     """Adding an idea normally should return 0, if it is valid in nature."""
