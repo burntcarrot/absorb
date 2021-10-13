@@ -141,7 +141,7 @@ def add(name: str, due_date: str, priority: str, group: str) -> None:
             if tasks_json == -1:
                 sys.exit(-1)
 
-            task_id = len([task for task in tasks_json]) + 1
+            task_id = len(list(tasks_json)) + 1
             content = {
                 "id": ("#" + str(task_id)),
                 "name": name,
