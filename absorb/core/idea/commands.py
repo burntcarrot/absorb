@@ -28,7 +28,8 @@ def idea() -> None:
 @click.argument("description")
 @click.argument("tags")
 def new(name: str, description: str, tags: str) -> None:
-    """Adds a new idea to ideas.json and commits the idea to the git repository.
+    """Adds a new idea to ideas.json and commits the idea to the git
+    repository.
 
     :param name: Name of the idea.
     :type name: str
@@ -66,7 +67,7 @@ def new(name: str, description: str, tags: str) -> None:
             ideas_json.append(content)
 
             with idea_path.open("w") as ideas_file:
-                ideas_json = json.dump(ideas_json, ideas_file)
+                json.dump(ideas_json, ideas_file)
                 console.print(
                     f':white_check_mark: "{name}" has been added to the list!'
                 )
@@ -88,7 +89,8 @@ def new(name: str, description: str, tags: str) -> None:
 @click.argument("description")
 @click.argument("tags")
 def edit(id: str, name: str, description: str, tags: str) -> None:
-    """Edits an existing idea in ideas.json and commits the changes in the git repository.
+    """Edits an existing idea in ideas.json and commits the changes in the git
+    repository.
 
     :param id: ID of the idea.
     :type id: str
@@ -128,7 +130,7 @@ def edit(id: str, name: str, description: str, tags: str) -> None:
                         card["tags"] = extracted_tags
 
             with idea_path.open("w") as idea_file:
-                filtered_idea = json.dump(filtered_idea, idea_file)
+                json.dump(filtered_idea, idea_file)
                 console.print(
                     f":white_check_mark: Card {id} has been modified in the idea!"
                 )
@@ -150,7 +152,7 @@ def edit(id: str, name: str, description: str, tags: str) -> None:
 @idea.command()
 @click.argument("id")
 def open(id: str) -> None:
-    """Opens an idea present in ideas.json
+    """Opens an idea present in ideas.json.
 
     :param id: ID of the idea.
     :type id: str
@@ -174,7 +176,7 @@ def open(id: str) -> None:
 
 @idea.command()
 def show() -> None:
-    """Shows all ideas present in ideas.json"""
+    """Shows all ideas present in ideas.json."""
 
     try:
         with idea_path.open("r") as ideas_file:

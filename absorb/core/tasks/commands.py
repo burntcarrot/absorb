@@ -24,7 +24,9 @@ def tasks() -> None:
 
 
 def parse_date(date_str: str, *args: str) -> datetime:
-    """Parses a date string and returns a datetime object after parsing the date string. The date string might contain some values which tells the function to shift the date by a particular period.
+    """Parses a date string and returns a datetime object after parsing the
+    date string. The date string might contain some values which tells the
+    function to shift the date by a particular period.
 
     :param date_str: Date string.
     :type date_str: str
@@ -90,7 +92,8 @@ def parse_date(date_str: str, *args: str) -> datetime:
 
 
 def load_json(tasks_file: TextIO) -> Any:
-    """Loads a file pointer and returns a JSON object. Used as a utility for checking any encoding/decoding while reading a JSON file.
+    """Loads a file pointer and returns a JSON object. Used as a utility for
+    checking any encoding/decoding while reading a JSON file.
 
     :param tasks_file: File pointer for the JSON file.
     :type tasks_file: TextIO
@@ -117,7 +120,8 @@ def load_json(tasks_file: TextIO) -> Any:
 @click.argument("priority")
 @click.argument("group")
 def add(name: str, due_date: str, priority: str, group: str) -> None:
-    """Adds a new task to tasks.json and commits the task to the git repository.
+    """Adds a new task to tasks.json and commits the task to the git
+    repository.
 
     :param name: Name of the task.
     :type name: str
@@ -154,7 +158,7 @@ def add(name: str, due_date: str, priority: str, group: str) -> None:
             tasks_json.append(content)
 
             with tasks_path.open("w") as tasks_file:
-                tasks_json = json.dump(tasks_json, tasks_file)
+                json.dump(tasks_json, tasks_file)
                 console.print(
                     f':white_check_mark: "{name}" has been added to the list!'
                 )
@@ -180,7 +184,8 @@ def add(name: str, due_date: str, priority: str, group: str) -> None:
 @click.argument("priority")
 @click.argument("group")
 def edit(id: str, name: str, date: str, priority: str, group: str) -> None:
-    """Edits an existing task in tasks.json and commits the changes in the git repository.
+    """Edits an existing task in tasks.json and commits the changes in the git
+    repository.
 
     :param id: ID of the task.
     :type id: str
@@ -219,7 +224,7 @@ def edit(id: str, name: str, date: str, priority: str, group: str) -> None:
                         task["group"] = extracted_groups
 
             with tasks_path.open("w") as tasks_file:
-                filtered_tasks = json.dump(filtered_tasks, tasks_file)
+                json.dump(filtered_tasks, tasks_file)
                 console.print(
                     f":white_check_mark: Task {id} has been modified in the list!"
                 )
@@ -241,7 +246,7 @@ def edit(id: str, name: str, date: str, priority: str, group: str) -> None:
 @tasks.command()
 @click.argument("id")
 def delete(id: str) -> None:
-    """Deletes a task from tasks.json
+    """Deletes a task from tasks.json.
 
     :param id: ID of the task.
     :type id: str
@@ -258,7 +263,7 @@ def delete(id: str) -> None:
 
         try:
             with tasks_path.open("w") as tasks_file:
-                filtered_tasks = json.dump(filtered_tasks, tasks_file)
+                json.dump(filtered_tasks, tasks_file)
                 repo.index.add([str(tasks_path)])
                 repo.index.commit(f"Deleted Task {id} from tasks.")
                 console.print(
@@ -281,7 +286,7 @@ def delete(id: str) -> None:
 
 @tasks.command()
 def show() -> None:
-    """Shows all tasks present in tasks.json"""
+    """Shows all tasks present in tasks.json."""
 
     try:
         with tasks_path.open("r") as tasks_file:

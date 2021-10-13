@@ -69,7 +69,7 @@ def add(name: str, status: str, description: str, tags: str) -> None:
             kanban_json.append(content)
 
             with kanban_path.open("w") as kanban_file:
-                kanban_json = json.dump(kanban_json, kanban_file)
+                json.dump(kanban_json, kanban_file)
                 console.print(
                     f':white_check_mark: "{name}" has been added to the board!'
                 )
@@ -101,7 +101,7 @@ def delete(id: str) -> None:
 
         try:
             with kanban_path.open("w") as kanban_file:
-                filtered_kanban = json.dump(filtered_kanban, kanban_file)
+                json.dump(filtered_kanban, kanban_file)
         except FileNotFoundError as e:
             logger.error(e)
             console.print(
@@ -161,7 +161,7 @@ def edit(id: str, name: str, description: str, tags: str) -> None:
                         card["tags"] = extracted_tags
 
             with kanban_path.open("w") as kanban_file:
-                filtered_kanban = json.dump(filtered_kanban, kanban_file)
+                json.dump(filtered_kanban, kanban_file)
                 console.print(
                     f":white_check_mark: Card {id} has been modified in the kanban!"
                 )
@@ -206,7 +206,7 @@ def move_card(id: str, new_status: str) -> None:
 
         try:
             with kanban_path.open("w") as kanban_file:
-                filtered_kanban = json.dump(filtered_kanban, kanban_file)
+                json.dump(filtered_kanban, kanban_file)
         except FileNotFoundError as e:
             logger.error(e)
             console.print(
