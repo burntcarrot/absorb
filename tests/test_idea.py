@@ -21,38 +21,67 @@ file_path = os.fspath(
 def test_idea_new(runner: CliRunner) -> None:
     """Adding an idea normally should return 0, if it is valid in nature."""
     result = runner.invoke(
-        idea, ["new", "Make a cool machine!", "Some description.", "@ideas"]
+        idea,
+        [
+            "new",
+            "Make a cool machine!",
+            "Some description.",
+            "@ideas",
+        ],
     )
     assert result.exit_code == 0
 
 
-def test_idea_new_empty_description(runner: CliRunner) -> None:
+def test_idea_new_empty_description(
+    runner: CliRunner,
+) -> None:
     """Adding an idea normally should return 0, if it is valid in nature."""
     result = runner.invoke(idea, ["new", ".", ".", "."])
     assert result.exit_code == 0
 
 
-def test_idea_new_description_file(runner: CliRunner) -> None:
-    """Adding an idea with decription file should return 0, if it is valid in nature."""
+def test_idea_new_description_file(
+    runner: CliRunner,
+) -> None:
+    """Adding an idea with decription file should return 0, if it is valid in
+    nature."""
     result = runner.invoke(
-        idea, ["new", "Make a cool machine!", "+file", "@file"], input=file_path
+        idea,
+        ["new", "Make a cool machine!", "+file", "@file"],
+        input=file_path,
     )
     assert result.exit_code == 0
 
 
 def test_idea_new_no_tags(runner: CliRunner) -> None:
-    """Adding an idea with no tags should return 0, if it is valid in nature."""
+    """Adding an idea with no tags should return 0, if it is valid in
+    nature."""
     result = runner.invoke(
-        idea, ["new", "Make a cool machine!", "Some description.", "."]
+        idea,
+        [
+            "new",
+            "Make a cool machine!",
+            "Some description.",
+            ".",
+        ],
     )
     assert result.exit_code == 0
 
 
-def test_idea_new_FileNotFoundError(runner: CliRunner) -> None:
-    """Adding an idea normally but ideas.json doesnt exist should return 0, if it is valid in nature."""
+def test_idea_new_FileNotFoundError(
+    runner: CliRunner,
+) -> None:
+    """Adding an idea normally but ideas.json doesnt exist should return 0, if
+    it is valid in nature."""
     os.rename(ROOT_PATH / "ideas.json", ROOT_PATH / "_ideas.json")
     result = runner.invoke(
-        idea, ["new", "Make a cool machine!", "Some description.", "@ideas"]
+        idea,
+        [
+            "new",
+            "Make a cool machine!",
+            "Some description.",
+            "@ideas",
+        ],
     )
     assert result.exit_code == 0
     os.remove(ROOT_PATH / "ideas.json")
@@ -76,40 +105,78 @@ def test_idea_edit(runner: CliRunner) -> None:
 
 
 def test_idea_edit_with_no_tags(runner: CliRunner) -> None:
-    """Editing an idea with no tags should return 0, if it is valid in nature."""
+    """Editing an idea with no tags should return 0, if it is valid in
+    nature."""
     result = runner.invoke(
-        idea, ["edit", "#1", "Make a super cool machine!", "New description.", "."]
+        idea,
+        [
+            "edit",
+            "#1",
+            "Make a super cool machine!",
+            "New description.",
+            ".",
+        ],
     )
     assert result.exit_code == 0
 
 
 def test_idea_edit_only_name(runner: CliRunner) -> None:
-    """Editing an idea's name with no tags or description should return 0, if it is valid in nature."""
-    result = runner.invoke(idea, ["edit", "#1", "Make a super cool machine!", ".", "."])
+    """Editing an idea's name with no tags or description should return 0, if
+    it is valid in nature."""
+    result = runner.invoke(
+        idea,
+        [
+            "edit",
+            "#1",
+            "Make a super cool machine!",
+            ".",
+            ".",
+        ],
+    )
     assert result.exit_code == 0
 
 
-def test_idea_edit_with_description_file(runner: CliRunner) -> None:
-    """Editing an idea with description file should return 0, if it is valid in nature."""
+def test_idea_edit_with_description_file(
+    runner: CliRunner,
+) -> None:
+    """Editing an idea with description file should return 0, if it is valid in
+    nature."""
     result = runner.invoke(
         idea,
-        ["edit", "#1", "Make a super cool machine!", "+file", "."],
+        [
+            "edit",
+            "#1",
+            "Make a super cool machine!",
+            "+file",
+            ".",
+        ],
         input=file_path,
     )
     assert result.exit_code == 0
 
 
 def test_idea_edit_only_tags(runner: CliRunner) -> None:
-    """Editing an idea's tags with no description or name should return 0, if it is valid in nature."""
+    """Editing an idea's tags with no description or name should return 0, if
+    it is valid in nature."""
     result = runner.invoke(idea, ["edit", "#1", ".", ".", "@create"])
     assert result.exit_code == 0
 
 
-def test_idea_edit_with_no_tags_FileNotFoundError(runner: CliRunner) -> None:
-    """Editing an idea with no tags but ideas.json doesnt exist should return 0, if it is valid in nature."""
+def test_idea_edit_with_no_tags_FileNotFoundError(
+    runner: CliRunner,
+) -> None:
+    """Editing an idea with no tags but ideas.json doesnt exist should return
+    0, if it is valid in nature."""
     os.rename(ROOT_PATH / "ideas.json", ROOT_PATH / "_ideas.json")
     result = runner.invoke(
-        idea, ["edit", "#1", "Make a super cool machine!", "New description.", "."]
+        idea,
+        [
+            "edit",
+            "#1",
+            "Make a super cool machine!",
+            "New description.",
+            ".",
+        ],
     )
     assert result.exit_code == 0
     os.remove(ROOT_PATH / "ideas.json")
@@ -131,8 +198,11 @@ def test_idea_open_2(runner: CliRunner) -> None:
     assert result.exit_code == 0
 
 
-def test_idea_open_FileNotFoundError(runner: CliRunner) -> None:
-    """Opening an idea bit ideas.json doesnt exist should return 0, if it is valid in nature."""
+def test_idea_open_FileNotFoundError(
+    runner: CliRunner,
+) -> None:
+    """Opening an idea bit ideas.json doesnt exist should return 0, if it is
+    valid in nature."""
     os.rename(ROOT_PATH / "ideas.json", ROOT_PATH / "_ideas.json")
     result = runner.invoke(idea, ["open", "#2"])
     assert result.exit_code == 0
@@ -146,8 +216,11 @@ def test_idea_show(runner: CliRunner) -> None:
     assert result.exit_code == 0
 
 
-def test_idea_show_FileNotFoundError(runner: CliRunner) -> None:
-    """Showing all ideas but ideas.json doesnt exist should return 0, if it is valid in nature."""
+def test_idea_show_FileNotFoundError(
+    runner: CliRunner,
+) -> None:
+    """Showing all ideas but ideas.json doesnt exist should return 0, if it is
+    valid in nature."""
     os.rename(ROOT_PATH / "ideas.json", ROOT_PATH / "_ideas.json")
     result = runner.invoke(idea, ["show"])
     assert result.exit_code == 0

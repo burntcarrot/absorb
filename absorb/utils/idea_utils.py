@@ -22,7 +22,9 @@ def parse_ideas(file_content: Any) -> None:
         idea_entry = idea
         tags = idea_entry["tags"]
         ideas_table.add_row(
-            idea_entry["id"], idea_entry["name"], f"[bold yellow]{tags}[/bold yellow]"
+            idea_entry["id"],
+            idea_entry["name"],
+            f"[bold yellow]{tags}[/bold yellow]",
         )
 
     console.print(ideas_table)

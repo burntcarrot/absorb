@@ -16,7 +16,10 @@ def convert_timedelta(duration: timedelta) -> namedtuple:
     :rtype: namedtuple
     """
 
-    date_tuple = namedtuple("ExtractedDate", ["days", "hours", "minutes", "seconds"])
+    date_tuple = namedtuple(
+        "ExtractedDate",
+        ["days", "hours", "minutes", "seconds"],
+    )
     days, seconds = duration.days, duration.seconds
     hours = days * 24 + seconds // 3600
     minutes = (seconds % 3600) // 60

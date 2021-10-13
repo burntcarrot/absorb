@@ -2,7 +2,12 @@ import nox
 import tempfile
 from nox.sessions import Session
 
-nox.options.sessions = "lint", "safety", "typeguard", "tests"
+nox.options.sessions = (
+    "lint",
+    "safety",
+    "typeguard",
+    "tests",
+)
 
 
 def install_with_constraints(session: Session, *args, **kwargs) -> None:
@@ -17,7 +22,11 @@ def install_with_constraints(session: Session, *args, **kwargs) -> None:
             f"--output={requirements.name}",
             external=True,
         )
-        session.install(f"--constraint={requirements.name}", *args, **kwargs)
+        session.install(
+            f"--constraint={requirements.name}",
+            *args,
+            **kwargs,
+        )
 
 
 @nox.session(python=["3.7", "3.8"])
@@ -29,7 +38,12 @@ def tests(session: Session) -> None:
     session.run("pytest", *args)
 
 
-lint_locations = "absorb", "tests", "noxfile.py", "docs/conf.py"
+lint_locations = (
+    "absorb",
+    "tests",
+    "noxfile.py",
+    "docs/conf.py",
+)
 
 
 @nox.session(python=["3.7", "3.8"])
@@ -71,14 +85,24 @@ def safety(session: Session) -> None:
             external=True,
         )
         install_with_constraints(session, "safety")
-        session.run("safety", "check", f"--file={requirements.name}", "--full-report")
+        session.run(
+            "safety",
+            "check",
+            f"--file={requirements.name}",
+            "--full-report",
+        )
 
 
 @nox.session(python=["3.7"])
 def docs(session: Session) -> None:
     """Build the documentation."""
     session.run("poetry", "install", "--no-dev", external=True)
-    install_with_constraints(session, "sphinx", "faculty-sphinx-theme", "sphinx-click")
+    install_with_constraints(
+        session,
+        "sphinx",
+        "faculty-sphinx-theme",
+        "sphinx-click",
+    )
     session.run("sphinx-build", "docs", "docs/_build")
 
 
