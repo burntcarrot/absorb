@@ -69,18 +69,15 @@ def test_parse_dates_day_with_hours_minutes_seconds() -> None:
     amount of days, hours, minutes and seconds being added to the current
     time."""
     result = parse_date("+1d 5h 5m 5s")
-    assert (
-        result.replace(microsecond=0)
-        == (
-            datetime.now()
-            + timedelta(
-                days=float(1),
-                hours=float(5),
-                minutes=float(5),
-                seconds=float(5),
-            )
-        ).replace(microsecond=0)
-    )
+    assert result.replace(microsecond=0) == (
+        datetime.now()
+        + timedelta(
+            days=float(1),
+            hours=float(5),
+            minutes=float(5),
+            seconds=float(5),
+        )
+    ).replace(microsecond=0)
 
 
 def test_parse_dates_invalid_char() -> None:
