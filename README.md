@@ -3,6 +3,9 @@
 <h1>absorb</h1>
 <h2>The extensible, feature-rich CLI workspace.</h2>
 <br>
+
+> **⚠️ Please update `absorb` to `0.1.2`! All versions below `0.1.2` are not recommended due to security issues in [GitPython](https://security.snyk.io/vuln/SNYK-PYTHON-GITPYTHON-3113858).**
+
 <a href = "https://pypi.org/project/absorb/">
 <img src = "https://img.shields.io/pypi/v/absorb.svg">
 </a>

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "absorb"
-version = "0.1.1"
+version = "0.1.2"
 description = "The extensible, feature-rich CLI workspace."
 authors = ["Aadhav Vignesh <aadhav.n1@gmail.com>"]
 
@@ -32,10 +32,11 @@ rich = "^10.3.0"
 smmap = "^4.0.0"
 typing-extensions = "^3.10.0"
 zipp = "^3.4.1"
+setuptools = "65.5.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"
-setuptools = "^57.0.0"
+setuptools = "^65.5.1"
 coverage = {extras = ["toml"], version = "^5.5"}
 pytest-cov = "^2.12.1"
 black = "^21.5b2"

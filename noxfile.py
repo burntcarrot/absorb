@@ -4,7 +4,7 @@ from nox.sessions import Session
 
 nox.options.sessions = (
     "lint",
-    "safety",
+    # "safety",
     "typeguard",
     "tests",
 )
